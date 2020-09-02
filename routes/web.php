@@ -35,4 +35,23 @@ Route::group(['middleware' => 'admin'], function()
     Route::get('activate-user-account/{id}', 'AdminController@activateUser');
     Route::get('deactivate-user-account/{id}', 'AdminController@deactivateUser');
     Route::get('/admin/log-activity', 'AdminController@getLogActivity');
+
+    Route::get('industries', 'AdminController@industry_view');
+    Route::get('hobbies', 'AdminController@hobby_view');
+    Route::get('interests', 'AdminController@interest_view');
+    Route::get('needs', 'AdminController@need_view');
+    Route::get('passions', 'AdminController@passion_view');
+
+
+    Route::post('industries', 'AdminController@industry_store');
+    Route::post('hobbies', 'AdminController@hobby_store');
+    Route::post('interests', 'AdminController@interest_store');
+    Route::post('needs', 'AdminController@need_store');
+    Route::post('passions', 'AdminController@passion_store');
+
+    Route::get('delete/industry/{id}', 'AdminController@industry_delete');
+    Route::get('delete/hobby/{id}', 'AdminController@hobby_delete');
+    Route::get('delete/interest/{id}', 'AdminController@interest_delete');
+    Route::get('delete/need/{id}', 'AdminController@need_delete');
+    Route::get('delete/passion/{id}', 'AdminController@passion_delete');
 });

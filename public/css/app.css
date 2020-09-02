@@ -16,7 +16,8 @@
 .header-data .search-bar {
     margin-top: 0;
 }
-.header-data nav{
+
+.header-data nav {
     width: 80% !important;
 }
 
@@ -196,7 +197,11 @@
     margin-bottom: 5px;
 }
 
-select{
+select {
     -webkit-appearance: auto !important;
     -moz-appearance: auto !important;
+}
+
+.userdshb .card {
+    margin-bottom: 20px;
 }

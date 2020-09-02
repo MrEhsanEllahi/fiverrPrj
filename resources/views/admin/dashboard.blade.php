@@ -4,6 +4,13 @@
 <div class="container-fluid bg-white admin-dashboard">
 <p class="welcome-title">Welcome Admin.</p>
 <p class="welcome-desc">Users who requires your approval will be on top.</p>
+<div class="d-flex justify-content-center align-items-center m-2 p-2">
+    <a href="/industries" class="btn btn-primary text-light mr-2">Industries</a>
+    <a href="/hobbies" class="btn btn-primary text-light mr-2">Hobbies</a>
+    <a href="/interests" class="btn btn-primary text-light mr-2">Interests</a>
+    <a href="/needs" class="btn btn-primary text-light mr-2">Needs</a>
+    <a href="/passions" class="btn btn-primary text-light mr-2">Passions</a>
+</div>
 @if(session()->has('success'))
                     <div class="alert alert-success">
                         {{ session()->get('success') }}

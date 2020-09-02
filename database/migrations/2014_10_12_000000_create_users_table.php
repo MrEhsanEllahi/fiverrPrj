@@ -24,12 +24,17 @@ class CreateUsersTable extends Migration
             $table->string('industry')->nullable();
             $table->string('password');
             $table->text('address')->nullable();
-            $table->text('passion')->nullable();
+            $table->string('passion')->nullable();
             $table->text('skills')->nullable();
             $table->string('ugrad_name')->nullable();
             $table->text('ugrad_major')->nullable();
             $table->string('grad_inst_name')->nullable();
             $table->text('grad_major')->nullable();
+            $table->string('opportunity')->nullable();
+            $table->string('need')->nullable();
+            $table->text('job_need')->nullable();
+            $table->text('board_ms')->nullable();
+            $table->text('organization_ms')->nullable();
             $table->boolean('mentor')->default(0);
             $table->boolean('activate')->default(0);
             $table->timestamp('email_verified_at')->nullable();

@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Auth;
+use App\Hobby;
+use App\Industry;
+use App\Interest;
+use App\Need;
+use App\Passion;
 use App\UserLog;
+use Auth;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -26,11 +31,18 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $industries = Industry::all();
+        $hobbies = Hobby::all();
+        $interests = Interest::all();
+        $needs = Need::all();
+        $passions = Passion::all();
         $user = Auth::user();
-        return view('home', ['user' => $user]);
+        return view('home', ['user' => $user, 'industries' => $industries, 'hobbies' => $hobbies,
+        'needs' => $needs, 'interests' => $interests, 'passions' => $passions]);
     }
 
-    public function updateUserProfile(Request $request){
+    public function updateUserProfile(Request $request)
+    {
         $user = Auth::user();
         $input = $request->all();
         $user->fill($input)->save();
