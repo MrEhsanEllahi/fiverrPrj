@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Hash;
 
 class CreateUsersTable extends Migration
 {
@@ -41,6 +42,16 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        $table = DB::table('users');
+        $table->truncate();
+
+        $data = [
+            ['name' => 'Admin', 'email' => 'admin@mail.com', 'role' => 1, 'password' => Hash::make('123456789')],
+            ['name' => 'Ehsan', 'email' => 'ehsan@mail.com', 'role' => 2, 'password' => Hash::make('123456789')],        
+        ];
+
+        $table->insert($data);
     }
 
     /**

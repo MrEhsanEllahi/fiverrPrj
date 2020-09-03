@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/migrate', function () {
-    Artisan::call("migrate");
-    return "Done";
-});
+// Route::get('/migrate', function () {
+//     Artisan::call("migrate");
+//     return "Done";
+// });
 
 Auth::routes();
 

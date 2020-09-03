@@ -31,6 +31,8 @@ class CreateHobbiesTable extends Migration
             ['name' => 'Swimming'],
         
         ];
+
+        $table->insert($data);
     }
 
     /**

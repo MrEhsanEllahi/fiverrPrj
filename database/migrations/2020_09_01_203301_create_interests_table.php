@@ -32,6 +32,8 @@ class CreateInterestsTable extends Migration
             ['name' => 'Business'],
         
         ];
+
+        $table->insert($data);
     }
 
     /**

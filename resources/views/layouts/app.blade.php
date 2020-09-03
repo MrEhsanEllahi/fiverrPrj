@@ -11,16 +11,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/popper.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery.mCustomScrollbar.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('lib/slick/slick.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/scrollbar.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -41,6 +31,23 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
         type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/popper.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.mCustomScrollbar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('lib/slick/slick.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/scrollbar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vee-validate@2.2.15/dist/vee-validate.js"></script>
+    
 </head>
 
 <body>
@@ -197,6 +204,7 @@
         </div>
     </footer>
     <!--footer end-->
+@yield('scripts')
 </body>
 
 </html>

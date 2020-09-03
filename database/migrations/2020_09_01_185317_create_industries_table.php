@@ -30,6 +30,8 @@ class CreateIndustriesTable extends Migration
             ['name' => 'Civil Services'],
         
         ];
+
+        $table->insert($data);
     }
 
     /**

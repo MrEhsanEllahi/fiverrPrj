@@ -32,6 +32,8 @@ class CreatePassionsTable extends Migration
             ['name' => 'Social Impact'],
         
         ];
+
+        $table->insert($data);
     }
 
     /**
