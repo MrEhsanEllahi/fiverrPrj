@@ -3,5 +3,14 @@ $(document).ready(function () {
     $("#success-alert").slideUp(500);
   });
 
-  $('select').selectpicker();
+  $('.selectpicker').selectpicker();
+
+  $('#needBS').on('changed.bs.select', function (e) {
+    var selected = e.target.value;
+    if (selected === 'Job') {
+      $('#jobDetails').show();
+    } else {
+      $('#jobDetails').hide();
+    }
+  });
 });

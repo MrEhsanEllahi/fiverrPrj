@@ -26,14 +26,13 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->text('address')->nullable();
             $table->string('passion')->nullable();
-            $table->text('skills')->nullable();
             $table->string('ugrad_name')->nullable();
             $table->text('ugrad_major')->nullable();
             $table->string('grad_inst_name')->nullable();
             $table->text('grad_major')->nullable();
             $table->string('opportunity')->nullable();
             $table->string('need')->nullable();
-            $table->text('job_need')->nullable();
+            $table->text('job_details')->nullable();
             $table->text('board_ms')->nullable();
             $table->text('organization_ms')->nullable();
             $table->boolean('mentor')->default(0);

@@ -31,14 +31,15 @@
                             <!--sd-title end-->
                             <div class="suggestions-list">
                                 @foreach($random_users as $ru)
-                                <div class="suggestion-usd">
-                                    <img src="images/resources/s1.png" alt="">
-                                    <div class="sgt-text">
-                                        <h4>{{$ru->name}}</h4>
-                                        <span>{{$ru->occupation}}</span>
+                                    <div class="suggestion-usd">
+                                        <img src="images/resources/s1.png" alt="">
+                                        <div class="sgt-text">
+                                            <h4>{{ $ru->name }}</h4>
+                                            <span>{{ $ru->occupation }}</span>
+                                        </div>
+                                        <span><a href="{{ url('user-profile') }}/{{ $ru->id }}"><i
+                                                    class="fa fa-eye"></i></a></span>
                                     </div>
-                                <span><a href="{{url('user-profile')}}/{{$ru->id}}"><i class="fa fa-eye"></i></a></span>
-                                </div>
                                 @endforeach
                             </div>
                             <!--suggestions-list end-->
@@ -50,14 +51,23 @@
                 <div class="col-lg-9">
                     <div class="main-ws-sec">
                         <div class="product-feed-tab current" id="info-dd">
-                            <div class="user-profile-ov">
-                                <h3 class="user-sec-title">Passion</h3>
-                                <p>{{ $user->passion ? $user->passion : 'NA'  }}</p>
-                            </div>
-                            <!--user-profile-ov end-->
-                            <div class="user-profile-ov">
-                                <h3 class="user-sec-title">Subject Matter Expertise</h3>
-                                <p>{{ $user->skills ? $user->skills : 'NA' }}</p>
+                            <div class="user-profile-ov st2">
+                                <h3 class="user-sec-title">About</h3>
+                                <h4>Occupation:</h4>
+                                <p>{{ $user->occupation ? $user->occupation : 'NA' }}
+                                </p>
+                                <h4>Industry:</h4>
+                                <p>{{ $user->industry ? $user->industry : 'NA' }}
+                                </p>
+                                <h4>Work Email:</h4>
+                                <p>{{ $user->work_email ? $user->work_email : 'NA' }}
+                                </p>
+                                <h4>Contact no:</h4>
+                                <p>{{ $user->cellphone ? $user->cellphone : 'NA' }}
+                                </p>
+                                <h4>Address:</h4>
+                                <p>{{ $user->address ? $user->address : 'NA' }}
+                                </p>
                             </div>
                             <!--user-profile-ov end-->
                             <div class="user-profile-ov">
@@ -77,17 +87,74 @@
                             </div>
                             <!--user-profile-ov end-->
                             <div class="user-profile-ov st2">
-                                <h3 class="user-sec-title">About</h3>
-                                <h4>Occupation:</h4>
-                                <p>{{ $user->occupation ? $user->occupation : 'NA' }}</p>
-                                <h4>Industry:</h4>
-                                <p>{{ $user->industry ? $user->industry : 'NA' }}</p>
-                                <h4>Work Email:</h4>
-                                <p>{{ $user->work_email ? $user->work_email : 'NA' }}</p>
-                                <h4>Contact no:</h4>
-                                <p>{{ $user->cellphone ? $user->cellphone : 'NA' }}</p>
-                                <h4>Address:</h4>
-                                <p>{{ $user->address ? $user->address : 'NA' }}</p>
+                                <h3 class="user-sec-title">Certifications</h3>
+                                @if(!$user->certifications->isEmpty())
+                                @foreach($user->certifications as $cert)
+                                <h4>{{$cert->name}}</h4>
+                                <p style="text-transform: capitalize;">{{$cert->institute}}</p>
+                                @endforeach
+                                @else
+                                <p>NA</p>
+                                @endif
+                            </div>
+                            <!--user-profile-ov end-->
+                            <div class="user-profile-ov">
+                                <h3 class="user-sec-title">Subject Matter Expertise</h3>
+                                @if(!empty($user->skills))
+                                    @foreach($user->skills as $skill)
+                                        <h4>Skill: {{ $skill->skill }}</h4>
+                                        <p>Proficiency: {{ $skill->level }}</p>
+                                    @endforeach
+                                @else
+                                    <p>NA</p>
+                                @endif
+                            </div>
+                            <!--user-profile-ov end-->
+                            <div class="user-profile-ov">
+                                <h3 class="user-sec-title">Passion</h3>
+                                <h4>Passionate About:</h4>
+                                <p>{{ $user->passion ? $user->passion : 'NA' }}
+                                </p>
+                                <h4>Hobbies:</h4>
+                                @if(!$user->hobbies->isEmpty())
+                                    <p class="trimString">
+                                        @foreach($user->hobbies as $hobby)
+                                            {{ $hobby->name }}@if(!$loop->last), @endif
+                                        @endforeach
+                                    </p>
+                                @else
+                                    <p>NA</p>
+                                @endif
+                                <h4>Interests:</h4>
+                                @if(!$user->interests->isEmpty())
+                                    <p class="trimString">
+                                        @foreach($user->interests as $interest)
+                                        {{ $interest->name }}@if(!$loop->last), @endif
+                                        @endforeach
+                                    </p>
+                                @else
+                                    <p>NA</p>
+                                @endif
+                                <h4>Board Memberships:</h4>
+                                <p>{{ $user->board_ms ? $user->board_ms : 'NA' }}</p>
+                                <h4>Organization Memberships:</h4>
+                                <p>{{ $user->organization_ms ? $user->organization_ms : 'NA' }}</p>
+                            </div>
+                            <!--user-profile-ov end-->
+                            <div class="user-profile-ov st2">
+                                <h3 class="user-sec-title">Opportunities For You:</h3>
+                                <h4>Opportunity:</h4>
+                                <p>{{ $user->opportunity ? $user->opportunity : 'NA'  }}</p>
+                            </div>
+                            <!--user-profile-ov end-->
+                            <div class="user-profile-ov st2">
+                                <h3 class="user-sec-title">Critical Need</h3>
+                                <h4>Need:</h4>
+                                <p>{{ $user->need }}</p>
+                                @if($user->need === 'Job')
+                                <h4>Job Description:</h4>
+                                <p>{{ $user->job_details ? $user->job_details : 'NA' }}</p>
+                                @endif
                             </div>
                             <!--user-profile-ov end-->
                         </div>

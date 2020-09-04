@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'address', 'cellphone', 'work_email', 'occupation', 'industry', 'passion', 'ugrad_name', 'ugrad_major', 'grad_inst_name', 'grad_major', 'mentor', 'activate', 'role', 'email', 'skills', 'password',
+        'name', 'address', 'cellphone', 'work_email', 'occupation', 'industry', 'passion', 'ugrad_name', 'ugrad_major', 'grad_inst_name', 'grad_major', 'mentor', 'activate', 'role', 'email', 'opportunity', 'need', 'job_details', 'passion', 'board_ms', 'organization_ms', 'password',
     ];
 
     /**
@@ -36,4 +36,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function skills(){
+        return $this->hasMany(UserSkill::class);
+    }
+
+    public function hobbies(){
+        return $this->hasMany(UserHobby::class);
+    }
+
+    public function interests(){
+        return $this->hasMany(UserInterest::class);
+    }
+
+    public function certifications(){
+        return $this->hasMany(UserCertification::class);
+    }
 }

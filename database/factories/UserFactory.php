@@ -30,8 +30,9 @@ $factory->define(User::class, function (Faker $faker) {
         'work_email' => $faker->unique()->safeEmail,
         'cellphone' => '+923008989568',
         'occupation' => $faker->randomElement(['Student', 'Professor', 'Doctor', 'Developer', 'Nurse', 'Sportsman']),
-        'industry' => $faker->randomElement(['Education', 'Affiliate Marketing', 'Web Development', 'Accounts', 'Teaching', 'health']),
-        'passion' => 'Want to bring change the world',
+        'industry' => $faker->randomElement(['Education', 'Health', 'Information Technology', 'Construction', 'Civil Services']),
+        'passion' => $faker->randomElement(['Innovation', 'Blockchain', 'Education', 'Science', 'Augmented Reality', 'Social Impact']),
+        'need' => $faker->randomElement(['Business Capital', 'Job', 'Loan', 'Developers']),
         'role' => 2,
     ];
 });

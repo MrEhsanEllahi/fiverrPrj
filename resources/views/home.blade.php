@@ -83,17 +83,22 @@
                             </select>
                         </div>
                         <div class="form-group col-md-12">
+                        <div id="skillContainer">
                             <label>Subject Matter Expertise:</label>
-                            <div v-for="(skill,k) in skills" :key="k" class="skillentry d-flex align-items-center justify-content-between">
-                                <input class="form-control col-9" type="text" name="skill[]" placeholder="Skill Name"
+                            <div class="skillentry d-flex align-items-center justify-content-start">
+                                <input class="form-control col-9 mr-2" type="text" name="skill[]" placeholder="Skill Name"
                                     required />
-                                <select class="form-control col-2" title="Choose Proficiency">
+                                <select id="SkilllevelSelect" class="form-control col-2" name="skill_level[]" title="Choose Proficiency">
                                     @for($i=1; $i<11; $i++)
                                         <option value={{ $i }}>{{ $i }}</option>
                                     @endfor
                                 </select>
                             </div>
-                            <button class="btn addFieldBtn btn-primary mt-3" type="button" @click="addSkillEntry()">Add Skill</button>
+                        </div>
+                        <div class="form-group mt-4 col-12 text-center">
+                            <button type="button" class="btn btn-success" id="addskill">+ Add Skill</button>
+                            <button type="button" class="btn btn-danger" id="removeskill">- Remove Skill</button>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -129,6 +134,21 @@
                             <textarea class="form-control" name="grad_major" placeholder="Your graduation Degree Majors"
                                 required>@if(old('grad_major')){{ old('grad_major') }}@else{{ $user->grad_major }}@endif</textarea>
                         </div>
+                        <div class="form-group col-md-12">
+                            <div id="certContainer">
+                                <label>Certifications:</label>
+                                <div class="certentry d-flex align-items-center justify-content-start">
+                                    <input class="form-control col-6 mr-2" type="text" name="certs[]" placeholder="Certification Name"
+                                        required />
+                                    <input class="form-control col-6 mr-2" type="text" name="certinst[]" placeholder="Institute Name"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="form-group mt-4 col-12 text-center">
+                                <button type="button" class="btn btn-success" id="addcert">+ Add Certification</button>
+                                <button type="button" class="btn btn-danger" id="removecert">- Remove Certification</button>
+                            </div>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -174,10 +194,18 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-md-12">
+                        <div id="jobDetails" class="form-group col-md-12" style="display: none;">
                             <label>Job details (if you are in need of JOB):</label>
-                            <textarea class="form-control" name="jobdetails"
+                            <textarea class="form-control" name="job_details"
                                 placeholder="Job description, Industry, Expected Salary, Willing to relocate etc"></textarea>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Board Memeberships:</label>
+                            <input class="form-control" name="board_ms" type="text" value="@if(old('board_ms')){{ old('board_ms') }}@else{{ $user->board_ms }}@endif" placeholder="Enter your board memeberships" required>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Organization Memeberships:</label>
+                            <input class="form-control" name="organization_ms" type="text" value="@if(old('organization_ms')){{ old('organization_ms') }}@else{{ $user->organization_ms }}@endif" placeholder="Enter your organization memeberships" required>
                         </div>
                         <div class="form-group col-md-12">
                             <label>Opportunities you have for other brothers:</label>
@@ -194,32 +222,22 @@
     </div>
 </div>
 @endsection
+
 @section('scripts')
-<script>
-    new Vue({
-        el: "#app",
-        data() {
-            return {
-                skills: [{
-                    'name': '',
-                    'level': ''
-                }]
-            }
-        },
-        methods: {
-            addSkillEntry() {
-                this.skills.push({
-                    name: '',
-                    level: ''
-                });
-
-                console.log('vue');
-            },
-            removeSkillEntry(index) {
-                this.skills.splice(index, 1);
-            }
-        }
+<script type="text/javascript">
+    $("#addskill").click(function () {
+        $cloned = $("#skillContainer").append("<div class=\"skillentry d-flex align-items-center justify-content-start\">" + $("#skillContainer").children('.skillentry').first().html() + "</div>");
     });
-
+    $("#removeskill").click(function (e) {
+        if ($("#skillContainer").children('.skillentry').length > 1)
+            $("#skillContainer .skillentry").last().remove();
+    });
+    $("#addcert").click(function () {
+        $("#certContainer").append("<div class=\"certentry d-flex align-items-center justify-content-start\">" + $("#certContainer").children('.certentry').first().html() + "</div>");
+    });
+    $("#removecert").click(function (e) {
+        if ($("#certContainer").children('.certentry').length > 1)
+            $("#certContainer .certentry").last().remove();
+    });
 </script>
 @endsection

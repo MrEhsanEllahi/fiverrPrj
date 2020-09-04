@@ -3,6 +3,31 @@
     outline: 0 !important;
 }
 
+:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+::-webkit-input-placeholder {
+    /* Edge */
+    color: #b2b2b2;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #b2b2b2;
+}
+
+:-moz-input-placeholder {
+    /* firefox */
+    color: #b2b2b2;
+}
+
+::placeholder {
+    color: #b2b2b2;
+}
+
+
 .header-sec {
     display: flex;
     justify-content: space-between;
@@ -209,4 +234,26 @@ select {
 
 .userdshb .card {
     margin-bottom: 20px;
+}
+
+#skillContainer .skillentry:not(:last-child),
+#certContainer .certentry:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.form-control {
+    color: #2a2a2a !important;
+}
+
+#SkilllevelSelect {}
+
+#SkilllevelSelect option:selected {
+    color: #fff;
+    background-color: #007bff;
+}
+
+#SkilllevelSelect option:hover {
+    color: #e44d3a;
+    border-bottom: 2px solid #e44d3a;
+    padding-bottom: 9px;
 }

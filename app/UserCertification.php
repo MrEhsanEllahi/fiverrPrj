@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserSkill extends Model
+class UserCertification extends Model
 {
-    protected $table = 'user_skills';
+    protected $table = 'certifications';
 
     /**
      * The attributes that are mass assignable.
@@ -14,6 +14,6 @@ class UserSkill extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'skill', 'level',
+        'name', 'institute', 'user_id'
     ];
 }

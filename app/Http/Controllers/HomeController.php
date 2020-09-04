@@ -8,6 +8,10 @@ use App\Interest;
 use App\Need;
 use App\Passion;
 use App\UserLog;
+use App\UserSkill;
+use App\UserCertification;
+use App\UserHobby;
+use App\UserInterest;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -37,18 +41,70 @@ class HomeController extends Controller
         $needs = Need::all();
         $passions = Passion::all();
         $user = Auth::user();
+        $user->skills;
+        $user->hobbies;
+        $user->interests;
+        $user->certifications;
+
         return view('home', ['user' => $user, 'industries' => $industries, 'hobbies' => $hobbies,
         'needs' => $needs, 'interests' => $interests, 'passions' => $passions]);
     }
 
     public function updateUserProfile(Request $request)
     {
+
         $user = Auth::user();
         $input = $request->all();
+
+        $skills = $input['skill'];
+        $skills_levels = $input['skill_level'];
+        $certs = $input['certs'];
+        $cert_inst = $input['certinst'];
+        $user_hobbies = $request->hobbies;
+        $user_interests = $request->interests;
+
+        UserHobby::where('user_id', $user->id)->delete();
+        UserInterest::where('user_id', $user->id)->delete();
+        UserCertification::where('user_id', $user->id)->delete();
+        UserSkill::where('user_id', $user->id)->delete();
+
         $user->fill($input)->save();
 
-        UserLog::create(['user_name' => $user->name, 'activity' => 'Updated the profile.']);
+        if($request->need != 'Job'){
+            $user->update(['job_details' => '']);
+        }
+        
+        foreach($skills as $skey=>$value){
+            UserSkill::create([
+                'user_id' => $user->id,
+                'skill' => $value,
+                'level' => $skills_levels[$skey]
+            ]);
+        }
 
-        return redirect('/home')->with('success', 'Successfully Updated!');
+        foreach($certs as $ckey=>$value){
+            UserCertification::create([
+                'user_id' => $user->id,
+                'name' => $value,
+                'institute' => $cert_inst[$ckey]
+            ]);
+        }
+
+        foreach($user_hobbies as $hobby){
+            UserHobby::create([
+                'user_id' => $user->id,
+                'name' => $hobby,
+            ]);
+        }
+
+        foreach($user_interests as $ints){
+            UserInterest::create([
+                'user_id' => $user->id,
+                'name' => $ints,
+            ]);
+        }
+
+        UserLog::create(['user_name' => $user->name, 'activity' => 'Updated the profile.']);
+        //return redirect('/home')->with('success', 'Successfully Updated!');
     }
 }

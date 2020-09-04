@@ -57,12 +57,22 @@ class MainController extends Controller
     }
 
     public function getUserProfile($id){
-        $rand_users = User::inRandomOrder()->where('activate', 1)->limit(5)->get();
         $user = User::where('id', $id)->where('activate', 1)->first();
+        $userNeed = $user->need;
+        $userIndustry = $user->industry;
+        $userPassion = $user->passion;
+        $rand_users = User::where('activate', 1)->where('need', $userNeed)->limit(5)->get();
+
+        $user->skills;
+        $user->hobbies;
+        $user->interests;
+        $user->certifications;
 
         if(!$user){
             return redirect('/');
         }
+
+        //return response()->json($user);
 
         return view('user-profile', ['user' => $user, 'random_users'=>$rand_users]);
     }
