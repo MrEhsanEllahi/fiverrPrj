@@ -88,7 +88,7 @@
                             <div class="skillentry d-flex align-items-center justify-content-start">
                                 <input class="form-control col-9 mr-2" type="text" name="skill[]" placeholder="Skill Name"
                                     required />
-                                <select id="SkilllevelSelect" class="form-control col-2" name="skill_level[]" title="Choose Proficiency">
+                                <select id="SkilllevelSelect" class="selectpicker col-2" name="skill_level[]" title="Choose Proficiency">
                                     @for($i=1; $i<11; $i++)
                                         <option value={{ $i }}>{{ $i }}</option>
                                     @endfor
@@ -226,7 +226,14 @@
 @section('scripts')
 <script type="text/javascript">
     $("#addskill").click(function () {
-        $cloned = $("#skillContainer").append("<div class=\"skillentry d-flex align-items-center justify-content-start\">" + $("#skillContainer").children('.skillentry').first().html() + "</div>");
+        //$cloned = $("#skillContainer").append("<div class=\"skillentry d-flex align-items-center justify-content-start\">" + $("#skillContainer").children('.skillentry').first().html() + "</div>");
+        // $clonedBS = $("#skillContainer .skillentry").first().find('.bootstrap-select').clone();
+        $cloned = $("#skillContainer .skillentry").first().clone();
+        $cloned.find('.bootstrap-select').replaceWith(function() { return $('select', this); })    
+        $cloned .find('.selectpicker').selectpicker('render'); 
+        $cloned.appendTo("#skillContainer");
+        // $cloned.find('.bootstrap-select').replaceWith($clonedBS);
+        // console.log($clonedBS);
     });
     $("#removeskill").click(function (e) {
         if ($("#skillContainer").children('.skillentry').length > 1)

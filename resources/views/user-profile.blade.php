@@ -14,6 +14,7 @@
                                 <div class="user-tab-sec">
                                     <h3>{{ $user->name }}</h3>
                                     <div class="star-descp">
+                                        <p>{{ $user->mentor === 0 ? 'Mentor' : 'Mentee' }}</p>
                                         <p>{{ $user->occupation }}</p>
                                     </div>
                                     <!--star-descp end-->

@@ -49,8 +49,7 @@ class MainController extends Controller
     public function getMentees(Request $request){
         $query = ($request->get('query') != null) ? ($request->get('query')) : '';
         if($query){
-            $mentees = User::with('UserSkill')->orderBy('id', 'DESC')
-            ->where('role', 2)
+            $mentees = User::where('role', 2)
             ->where('mentor', 1)
             ->where('activate', 1)
             ->where('name', 'like', '%' . $query . '%')
@@ -64,9 +63,19 @@ class MainController extends Controller
             ->orWhere('passion', 'like', '%' . $query . '%')
             ->orWhere('occupation', 'like', '%' . $query . '%')
             ->orWhere('industry', 'like', '%' . $query . '%')
-            ->WhereHas('UserSkill', function($q){
+            ->orWhereHas('skills', function($q) use ($query){
                 $q->where('skill', 'like', '%' . $query . '%');
             })
+            ->orWhereHas('certifications', function($q) use ($query){
+                $q->where('name', 'like', '%' . $query . '%');
+            })
+            ->orWhereHas('hobbies', function($q) use ($query){
+                $q->where('name', 'like', '%' . $query . '%');
+            })
+            ->orWhereHas('interests', function($q) use ($query){
+                $q->where('name', 'like', '%' . $query . '%');
+            })
+            ->orderBy('id', 'DESC')
             ->paginate(12);
         }else{
             $mentees = User::orderBy('id', 'DESC')->where('role', 2)->where('mentor', 1)->where('activate', 1)->paginate(12);
@@ -79,8 +88,9 @@ class MainController extends Controller
         $userNeed = $user->need;
         $userIndustry = $user->industry;
         $userPassion = $user->passion;
-        $mergedUsers = User::where('activate', 1)->where('need', $userNeed)
-        ->where('industry', $userIndustry)->where('passion', $userPassion)
+        $mergedUsers = User::where('activate', 1)->where('id', '!=', $user->id)
+        ->where('mentor', !$user->mentor)
+        ->where('need', $userNeed)->where('industry', $userIndustry)->where('passion', $userPassion)
         ->orWhere('need', $userNeed)->where('industry', $userIndustry)
         ->orWhere('need', $userNeed)->where('passion', $userPassion)
         ->orWhere('industry', $userIndustry)->where('passion', $userPassion)
