@@ -67,7 +67,12 @@
                                                 <a href="{{ route('password.request') }}" title="">Forgot Password?</a>
                                             </div>
                                         </div>
-                                        <a class="mt-2" href="{{ route('register') }}" title="">Register free account!</a>
+                                        <a class="mt-2" href="{{ route('register') }}" title="">Register free
+                                            account!</a>
+                                        @if(env('GOOGLE_RECAPTCHA_KEY'))
+                                        <div class="g-recaptcha mt-2" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
+                                        </div>
+                                        @endif
                                         <div class="col-lg-12 no-pdd">
                                             <button type="submit" value="submit">Sign in</button>
                                         </div>

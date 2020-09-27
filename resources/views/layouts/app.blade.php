@@ -47,6 +47,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vee-validate@2.2.15/dist/vee-validate.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     
 </head>
 

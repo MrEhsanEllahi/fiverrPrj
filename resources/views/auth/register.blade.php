@@ -35,22 +35,22 @@
                                                     <i class="la la-user"></i>
                                                 </div>
                                                 @error('name')
-                                                    <span class="invalid-feedback d-block mt-1" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                <span class="invalid-feedback d-block mt-1" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                             <div class="col-lg-12 no-pdd mb-3">
                                                 <div class="sn-field mb-0">
                                                     <input type="email" class="@error('email') is-invalid @enderror"
-                                                        name="email" value="{{ old('email') }}"
-                                                        placeholder="Email" required autocomplete="email">
+                                                        name="email" value="{{ old('email') }}" placeholder="Email"
+                                                        required autocomplete="email">
                                                     <i class="fa fa-envelope"></i>
                                                 </div>
                                                 @error('email')
-                                                    <span class="invalid-feedback d-block mt-1" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                <span class="invalid-feedback d-block mt-1" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                             <div class="col-lg-12 no-pdd mb-3">
@@ -61,9 +61,9 @@
                                                     <i class="la la-lock"></i>
                                                 </div>
                                                 @error('password')
-                                                    <span class="invalid-feedback d-block mt-1" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                <span class="invalid-feedback d-block mt-1" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                             <div class="col-lg-12 no-pdd mb-3">
@@ -87,7 +87,13 @@
                                                     <!--fgt-sec end-->
                                                 </div>
                                             </div>
-                                            <a class="mt-2" href="{{ route('login') }}" title="">Have an account? Login!</a>
+                                            <a class="mt-2" href="{{ route('login') }}" title="">Have an account?
+                                                Login!</a>
+                                            @if(env('GOOGLE_RECAPTCHA_KEY'))
+                                            <div class="g-recaptcha mt-2"
+                                                data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
+                                            </div>
+                                            @endif
                                             <div class="col-lg-12 no-pdd">
                                                 <button type="submit" value="submit">Sign Up</button>
                                             </div>
