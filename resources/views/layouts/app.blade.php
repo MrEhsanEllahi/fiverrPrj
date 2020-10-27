@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', '1906Connect') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -199,7 +199,7 @@
 					<li><a href="#" title="">Language</a></li>
 					<li><a href="#" title="">Copyright Policy</a></li> --}}
                 </ul>
-                <p><img src="{{ asset('images/copy-icon2.png') }}" alt="">Copyright 2019</p>
+                <p><img src="{{ asset('images/copy-icon2.png') }}" alt="">Copyright {{ date('Y') }}</p>
                 <img class="fl-rgt" src="{{ asset('images/logo2.png') }}" alt="">
             </div>
         </div>
