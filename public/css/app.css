@@ -105,7 +105,7 @@
 }
 
 .carousel-sec .cfa-links .btn {
-    background-color: #e44d3a;
+    background-color: rgb(144,99,33);
     color: #fff;
     padding: 8px 20px;
     font-size: 16px;
@@ -168,7 +168,7 @@
 
 .company_profile_info>a:hover {
     width: 100%;
-    background-color: #e44d3a;
+    background-color: rgb(144,99,33);
     color: #fff
 }
 
@@ -256,4 +256,53 @@ select {
     color: #e44d3a;
     border-bottom: 2px solid #e44d3a;
     padding-bottom: 9px;
+}
+
+.product-feed-tab.current{
+    display: flex !important;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.product-feed-tab.current .user-profile-ov{
+    width: 48%;
+}
+.user-profile-ov.st2 p{
+    margin-bottom: 10px !important;
+}
+.footy-sec{
+    background-color: #0a0a0a;
+}
+.footy-sec .container-fluid{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px !important;
+}
+.footy-sec .container-fluid *{
+    padding: 0 !important;
+    margin: 0 !important;
+    float: none !important;
+}
+.footy-sec.mn ul li{
+    padding: 0 10px !important;
+}
+.footy-sec.mn ul li a:hover{
+    color: rgb(144,99,33) !important;
+}
+@media screen and (max-width: 480px){
+    .footy-sec .container-fluid{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footy-sec .container-fluid ul, .footy-sec .container-fluid p{
+        margin-bottom: 20px !important;
+    }
+}
+
+@media screen and (max-width: 840px){
+    .product-feed-tab.current .user-profile-ov{
+        width: 97%;
+    }
 }

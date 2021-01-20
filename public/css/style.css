@@ -271,7 +271,7 @@ nav ul li:hover > ul,
 header {
 	float: left;
 	width: 100%;
-	background-color: #e44d3a;
+	background-color: rgb(144,99,33);
 }
 .header-data {
 	float: left;
@@ -279,7 +279,7 @@ header {
 }
 .logo {
 	float: left;
-	width: 40px;
+	width: 300px;
 	margin-right: 14px;
 	margin-top: 10px;
 }
@@ -2574,6 +2574,7 @@ footer {
 	float: right;
 	margin-top: 34px;
 	padding-right: 30px;
+	width: 100px;
 }
 
 /* ================== USER PROFILE =================== */
@@ -3691,7 +3692,7 @@ a:hover {
 	background-color: #53d690;
 }
 .message-us {
-	background-color: #e44d3a;
+	background-color: rgb(144,99,33);
 }
 .hire-us {
 	background-color: #51a5fb;
@@ -6838,4 +6839,8 @@ ul#myTab {
     line-height: 24px;
     font-size: 14px;
     color: #666666;
+}
+h1{
+	font-size: 3rem;
+	font-weight: bold;
 }

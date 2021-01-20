@@ -144,9 +144,6 @@
                                     @elseif(Auth::user()->role === 2)
                                         <li><a href="/home" title="">Dashboard</a></li>
                                     @endif
-                                    <li><a href="#" title="">Privacy</a></li>
-                                    <li><a href="#" title="">Faqs</a></li>
-                                    <li><a href="#" title="">Terms & Conditions</a></li>
                                 </ul>
                                 <h3 class="tc"><a href="{{ route('logout') }}" onclick="event.preventDefault();
 								document.getElementById('logout-form').submit();" title="">{{ __('Logout') }}</a></h3>
@@ -170,7 +167,7 @@
     </div>
     <footer>
         <div class="footy-sec mn no-margin">
-            <div class="container">
+            <div class="container-fluid">
                 <ul>
                     @auth
                         @if(Auth::user()->role === 1)
@@ -199,7 +196,7 @@
 					<li><a href="#" title="">Language</a></li>
 					<li><a href="#" title="">Copyright Policy</a></li> --}}
                 </ul>
-                <p><img src="{{ asset('images/copy-icon2.png') }}" alt="">Copyright {{ date('Y') }}</p>
+                <p>© Copyright {{ date('Y') }} Alpha Connect</p>
                 <img class="fl-rgt" src="{{ asset('images/logo2.png') }}" alt="">
             </div>
         </div>

@@ -3,15 +3,15 @@
 @section('content')
 <div class="container-fluid p-3 bg-white userdshb">
     @if(session()->has('success'))
-        <div class="alert alert-success">
-            {{ session()->get('success') }}
-        </div>
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
     @endif
     @if(Auth::user()->activate === 0)
-        <h2 class="text-center">Welcome {{ Auth::user()->name }}, your account is pending for approval. Meanwhile
-            update your data below to get noticed.</h2>
+    <h2 class="text-center">Welcome {{ Auth::user()->name }}, your account is pending for approval. Meanwhile
+        update your data below to get noticed.</h2>
     @else
-        <h2 class="text-center">Welcome {{ Auth::user()->name }}. Update your data below to help others.</h2>
+    <h2 class="text-center">Welcome {{ Auth::user()->name }}. Update your data below to help others.</h2>
     @endif
     <div class="user-update-form mt-4">
         <form method="POST" action="{{ route('user.update_profile') }}">
@@ -25,14 +25,12 @@
                         <div class="form-group col-md-3 ">
                             <label>Name:</label>
                             <input type="text" class="form-control" name="name" placeholder="Your Name"
-                                value="@if(old('name')){{ old('name') }}@else{{ $user->name }}@endif"
-                                required>
+                                value="@if(old('name')){{ old('name') }}@else{{ $user->name }}@endif" required>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Email:</label>
                             <input type="email" class="form-control" name="email" placeholder="Your Email"
-                                value="@if(old('email')){{ old('email') }}@else{{ $user->email }}@endif"
-                                required>
+                                value="@if(old('email')){{ old('email') }}@else{{ $user->email }}@endif" required>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Interest (Mentor or Mentee):</label>
@@ -78,27 +76,27 @@
                             <select id="indBS" class="form-control selectpicker" name="industry" data-live-search="true"
                                 required>
                                 @foreach($industries as $ind)
-                                    <option value="{{ $ind->name }}">{{ $ind->name }}</option>
+                                <option value="{{ $ind->name }}">{{ $ind->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-12">
-                        <div id="skillContainer">
-                            <label>Subject Matter Expertise:</label>
-                            <div class="skillentry d-flex align-items-center justify-content-start">
-                                <input class="form-control col-9 mr-2" type="text" name="skill[]" placeholder="Skill Name"
-                                    required />
-                                <select id="SkilllevelSelect" class="selectpicker col-2" name="skill_level[]" title="Choose Proficiency">
-                                    @for($i=1; $i<11; $i++)
-                                        <option value={{ $i }}>{{ $i }}</option>
-                                    @endfor
-                                </select>
+                            <div id="skillContainer">
+                                <label>Subject Matter Expertise:</label>
+                                <div class="skillentry d-flex align-items-center justify-content-start">
+                                    <input class="form-control col-9 mr-2" type="text" name="skill[]"
+                                        placeholder="Skill Name" required />
+                                    <select id="SkilllevelSelect" class="selectpicker col-2" name="skill_level[]"
+                                        title="Choose Proficiency">
+                                        @for($i=1; $i<11; $i++) <option value={{ $i }}>{{ $i }}</option>
+                                            @endfor
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group mt-4 col-12 text-center">
-                            <button type="button" class="btn btn-success" id="addskill">+ Add Skill</button>
-                            <button type="button" class="btn btn-danger" id="removeskill">- Remove Skill</button>
-                        </div>
+                            <div class="form-group mt-4 col-12 text-center">
+                                <button type="button" class="btn btn-success" id="addskill">+ Add Skill</button>
+                                <button type="button" class="btn btn-danger" id="removeskill">- Remove Skill</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -134,21 +132,6 @@
                             <textarea class="form-control" name="grad_major" placeholder="Your graduation Degree Majors"
                                 required>@if(old('grad_major')){{ old('grad_major') }}@else{{ $user->grad_major }}@endif</textarea>
                         </div>
-                        <div class="form-group col-md-12">
-                            <div id="certContainer">
-                                <label>Certifications:</label>
-                                <div class="certentry d-flex align-items-center justify-content-start">
-                                    <input class="form-control col-6 mr-2" type="text" name="certs[]" placeholder="Certification Name"
-                                        required />
-                                    <input class="form-control col-6 mr-2" type="text" name="certinst[]" placeholder="Institute Name"
-                                        required />
-                                </div>
-                            </div>
-                            <div class="form-group mt-4 col-12 text-center">
-                                <button type="button" class="btn btn-success" id="addcert">+ Add Certification</button>
-                                <button type="button" class="btn btn-danger" id="removecert">- Remove Certification</button>
-                            </div>
-                            </div>
                     </div>
                 </div>
             </div>
@@ -163,7 +146,7 @@
                             <select id="passionBS" class="form-control selectpicker" name="passion"
                                 data-live-search="true" required>
                                 @foreach($passions as $p)
-                                    <option value="{{ $p->name }}">{{ $p->name }}</option>
+                                <option value="{{ $p->name }}">{{ $p->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -172,7 +155,7 @@
                             <select id="hobbyBS" class="form-control selectpicker" name="hobbies[]"
                                 data-live-search="true" multiple required>
                                 @foreach($hobbies as $h)
-                                    <option value="{{ $h->name }}">{{ $h->name }}</option>
+                                <option value="{{ $h->name }}">{{ $h->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -181,7 +164,7 @@
                             <select id="int BS" class="form-control selectpicker" name="interests[]"
                                 data-live-search="true" multiple required>
                                 @foreach($interests as $i)
-                                    <option value="{{ $i->name }}">{{ $i->name }}</option>
+                                <option value="{{ $i->name }}">{{ $i->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -190,7 +173,7 @@
                             <select id="needBS" class="form-control selectpicker" name="need" data-live-search="true"
                                 required>
                                 @foreach($needs as $n)
-                                    <option value="{{ $n->name }}">{{ $n->name }}</option>
+                                <option value="{{ $n->name }}">{{ $n->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -201,11 +184,15 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label>Board Memeberships:</label>
-                            <input class="form-control" name="board_ms" type="text" value="@if(old('board_ms')){{ old('board_ms') }}@else{{ $user->board_ms }}@endif" placeholder="Enter your board memeberships" required>
+                            <input class="form-control" name="board_ms" type="text"
+                                value="@if(old('board_ms')){{ old('board_ms') }}@else{{ $user->board_ms }}@endif"
+                                placeholder="Enter your board memeberships" required>
                         </div>
                         <div class="form-group col-md-12">
                             <label>Organization Memeberships:</label>
-                            <input class="form-control" name="organization_ms" type="text" value="@if(old('organization_ms')){{ old('organization_ms') }}@else{{ $user->organization_ms }}@endif" placeholder="Enter your organization memeberships" required>
+                            <input class="form-control" name="organization_ms" type="text"
+                                value="@if(old('organization_ms')){{ old('organization_ms') }}@else{{ $user->organization_ms }}@endif"
+                                placeholder="Enter your organization memeberships" required>
                         </div>
                         <div class="form-group col-md-12">
                             <label>Opportunities you have for other brothers:</label>
@@ -229,8 +216,10 @@
         //$cloned = $("#skillContainer").append("<div class=\"skillentry d-flex align-items-center justify-content-start\">" + $("#skillContainer").children('.skillentry').first().html() + "</div>");
         // $clonedBS = $("#skillContainer .skillentry").first().find('.bootstrap-select').clone();
         $cloned = $("#skillContainer .skillentry").first().clone();
-        $cloned.find('.bootstrap-select').replaceWith(function() { return $('select', this); })    
-        $cloned .find('.selectpicker').selectpicker('render'); 
+        $cloned.find('.bootstrap-select').replaceWith(function () {
+            return $('select', this);
+        })
+        $cloned.find('.selectpicker').selectpicker('render');
         $cloned.appendTo("#skillContainer");
         // $cloned.find('.bootstrap-select').replaceWith($clonedBS);
         // console.log($clonedBS);
@@ -240,11 +229,13 @@
             $("#skillContainer .skillentry").last().remove();
     });
     $("#addcert").click(function () {
-        $("#certContainer").append("<div class=\"certentry d-flex align-items-center justify-content-start\">" + $("#certContainer").children('.certentry').first().html() + "</div>");
+        $("#certContainer").append("<div class=\"certentry d-flex align-items-center justify-content-start\">" +
+            $("#certContainer").children('.certentry').first().html() + "</div>");
     });
     $("#removecert").click(function (e) {
         if ($("#certContainer").children('.certentry').length > 1)
             $("#certContainer .certentry").last().remove();
     });
+
 </script>
 @endsection

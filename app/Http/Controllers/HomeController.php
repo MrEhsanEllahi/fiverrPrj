@@ -58,14 +58,11 @@ class HomeController extends Controller
 
         $skills = $input['skill'];
         $skills_levels = $input['skill_level'];
-        $certs = $input['certs'];
-        $cert_inst = $input['certinst'];
         $user_hobbies = $request->hobbies;
         $user_interests = $request->interests;
 
         UserHobby::where('user_id', $user->id)->delete();
         UserInterest::where('user_id', $user->id)->delete();
-        UserCertification::where('user_id', $user->id)->delete();
         UserSkill::where('user_id', $user->id)->delete();
 
         $user->fill($input)->save();
@@ -79,14 +76,6 @@ class HomeController extends Controller
                 'user_id' => $user->id,
                 'skill' => $value,
                 'level' => $skills_levels[$skey]
-            ]);
-        }
-
-        foreach($certs as $ckey=>$value){
-            UserCertification::create([
-                'user_id' => $user->id,
-                'name' => $value,
-                'institute' => $cert_inst[$ckey]
             ]);
         }
 
